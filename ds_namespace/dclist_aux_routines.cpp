@@ -1,7 +1,7 @@
 #include <iostream>
 #include "list.h"
 
-using namespace list;
+using namespace ds;
 
 dnode *dclist::get_node (int data)
 {

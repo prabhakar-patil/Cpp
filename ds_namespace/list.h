@@ -1,10 +1,27 @@
 #ifndef _LIST_H_
 #define _LIST_H_
+
 #include <iostream>
 #include <stdexcept>
 
-namespace list
+namespace ds 
 {
+	class list
+	{
+	public:
+        	virtual void insert_beg (int n_data) {}
+	        virtual void insert_end (int n_data) {}
+        	virtual void insert_after_data (int e_data, int n_data) {}
+	        virtual void insert_before_data (int e_data, int n_data) {}
+        	virtual void del_beg (void) {} 
+	        virtual void del_end (void) {}
+	        virtual void del_data (int e_data) {}
+	        virtual bool is_empty (void) {}
+        	virtual int length (void) {}
+	        virtual void display (void) {}
+		virtual bool search (int s_data) {}
+	};
+
 /************* Doubly *********************/
 	class dnode
 	{	
@@ -18,23 +35,23 @@ namespace list
 		dnode (int d) 	{ data = d; }
 	};
 
-	class dlist
+	class dlist : public list
 	{
 	public:
 		dlist();
 		~dlist ();
 		
-        	virtual void insert_beg (int n_data);
-	        virtual void insert_end (int n_data);
-        	virtual void insert_after_data (int e_data, int n_data);
-	        virtual void insert_before_data (int e_data, int n_data);
-        	virtual void del_beg (void);
-	        virtual void del_end (void);
-	        virtual void del_data (int e_data);
-	        virtual bool is_empty (void);
-        	virtual int length (void);
-	        virtual void display (void);
-		virtual bool search (int s_data);
+        	void insert_beg (int n_data);
+	        void insert_end (int n_data);
+        	void insert_after_data (int e_data, int n_data);
+	        void insert_before_data (int e_data, int n_data);
+        	void del_beg (void);
+	        void del_end (void);
+	        void del_data (int e_data);
+	        bool is_empty (void);
+        	int length (void);
+	        void display (void);
+		bool search (int s_data);
 	private:
 		dnode *head;
 
@@ -44,23 +61,23 @@ namespace list
 		dnode *search_node (int s_data);
 	};
 
-	class dclist
+	class dclist : public list
 	{
 	public:
 		dclist();
 		~dclist ();
 		
-        	virtual void insert_beg (int n_data);
-	        virtual void insert_end (int n_data);
-        	virtual void insert_after_data (int e_data, int n_data);
-	        virtual void insert_before_data (int e_data, int n_data);
-        	virtual void del_beg (void);
-	        virtual void del_end (void);
-	        virtual void del_data (int e_data);
-	        virtual bool is_empty (void);
-        	virtual int length (void);
-	        virtual void display (void);
-		virtual bool search (int s_data);
+        	void insert_beg (int n_data);
+	        void insert_end (int n_data);
+        	void insert_after_data (int e_data, int n_data);
+	        void insert_before_data (int e_data, int n_data);
+        	void del_beg (void);
+	        void del_end (void);
+	        void del_data (int e_data);
+	        bool is_empty (void);
+        	int length (void);
+	        void display (void);
+		bool search (int s_data);
 	private:
 		dnode *head;
 
@@ -83,23 +100,23 @@ namespace list
 			snode (int d) 	{ data = d; }	
 	};
 
-	class slist
+	class slist : public list
 	{
 	public:
 		slist();
 		~slist ();
 		
-        	virtual void insert_beg (int n_data);
-	        virtual void insert_end (int n_data);
-        	virtual void insert_after_data (int e_data, int n_data);
-	        virtual void insert_before_data (int e_data, int n_data);
-        	virtual void del_beg (void);
-	        virtual void del_end (void);
-	        virtual void del_data (int e_data);
-	        virtual bool is_empty (void);
-        	virtual int length (void);
-	        virtual void display (void);
-		virtual bool search (int s_data);
+        	void insert_beg (int n_data);
+	        void insert_end (int n_data);
+        	void insert_after_data (int e_data, int n_data);
+	        void insert_before_data (int e_data, int n_data);
+        	void del_beg (void);
+	        void del_end (void);
+	        void del_data (int e_data);
+	        bool is_empty (void);
+        	int length (void);
+	        void display (void);
+		bool search (int s_data);
 	private:
 		snode *head;
 
@@ -111,23 +128,23 @@ namespace list
 		snode *search_back_node (int s_data);
 	};
 	
-	class sclist
+	class sclist : public list
 	{
 	public:
 		sclist();
 		~sclist ();
 		
-        	virtual void insert_beg (int n_data);
-	        virtual void insert_end (int n_data);
-        	virtual void insert_after_data (int e_data, int n_data);
-	        virtual void insert_before_data (int e_data, int n_data);
-        	virtual void del_beg (void);
-	        virtual void del_end (void);
-	        virtual void del_data (int e_data);
-	        virtual bool is_empty (void);
-        	virtual int length (void);
-	        virtual void display (void);
-		virtual bool search (int s_data);
+        	void insert_beg (int n_data);
+	        void insert_end (int n_data);
+        	void insert_after_data (int e_data, int n_data);
+	        void insert_before_data (int e_data, int n_data);
+        	void del_beg (void);
+	        void del_end (void);
+	        void del_data (int e_data);
+	        bool is_empty (void);
+        	int length (void);
+	        void display (void);
+		bool search (int s_data);
 	private:
 		snode *head;
 
@@ -137,7 +154,17 @@ namespace list
 		snode *search_node (int s_data);
 		snode *get_last_node (void);
 		snode *search_back_node (int s_data);
-	};
+	}; /*class sclist*/
 };	
+
+typedef enum LIST_TYPE 
+{
+	DOUBLY,
+	DOUBLY_CIRCULAR,
+	SINGLY,
+	SINGLY_CIRCULAR,
+}list_type_t;
+
+void CoCreateInstance (ds::list **plist, list_type_t lst_type);
 
 #endif /*_LIST_H_*/

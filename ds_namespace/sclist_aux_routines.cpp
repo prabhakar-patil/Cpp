@@ -3,8 +3,7 @@
 #include "list.h"
 #include "list_exception.h"
 
-
-using namespace list;
+using namespace ds;
 
 snode *sclist::get_node (int data)
 {

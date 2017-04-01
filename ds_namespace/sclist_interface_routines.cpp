@@ -2,7 +2,7 @@
 #include "list.h"
 #include "list_exception.h"
 
-using namespace list;
+using namespace ds;
 
 sclist::sclist()
 { 

@@ -4,7 +4,7 @@
 #include "list_exception.h"
 
 
-using namespace list;
+using namespace ds;
 
 snode *slist::get_node (int data)
 {

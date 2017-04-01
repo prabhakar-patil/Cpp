@@ -1,12 +1,19 @@
 #include <iostream>
-#include "list_client1.h"
+#include "list_client.h"
 #include "list_exception.h"
 
-using namespace list;
+using namespace ds;
 
 int main (void)
 {
-	dclist *ptr = new dclist ();
+	list *ptr;	
+	/* 2nd Arg:
+	   DOUBLY 		: doubly linked list style 
+	   DOUBLY_CIRCULAR 	: doubly circular list style
+	   SINGLY		: singly linked list style
+	   SINGLY_CIRCULAR	: singly circular list style  
+	*/
+	CoCreateInstance (&ptr, SINGLY_CIRCULAR);
 	
 	try {
 		ptr->del_beg ();
